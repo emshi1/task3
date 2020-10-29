@@ -1,0 +1,20 @@
+.col-8, .col-4{
+    padding: 0 !important;
+}
+.row{
+    height: 100%;
+    margin-top: 3em;
+}
+
+.btn-success {
+    float:right;
+}
+
+.btn-primary{
+margin: 1em 0em;
+}
+
+.btn-danger{
+    float: right;
+    padding: 0px 7px !important;
+}
