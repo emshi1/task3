@@ -1,0 +1,12 @@
+.right{
+    text-align: justify;
+    width: 100%;
+    border: black 1px solid;
+    border-left: none;
+    height: 100%;
+}
+
+h3{
+    margin: 0.2em;
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+.task{
+    margin: 1em;
+    width: 90%;
+    text-align: justify;
+    border: 1px solid black;
+    padding: 0.5em;
+    display: inline-block;
+}
+.a{
+    color:black;
+}
+.a:hover{
+    text-decoration: none;
+    color: black;
+}

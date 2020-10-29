@@ -1,0 +1,23 @@
+.input {
+    margin: 1em;
+ 
+}
+
+.login{
+    border: 1px solid black;
+    text-align: center;
+    left: 35%;
+    margin-top: 5em;
+
+}
+
+.h3{
+    margin-top: 1em;
+}
+.a{
+    color: lightgray;
+}
+
+.a:hover{
+    text-decoration: none;
+}
