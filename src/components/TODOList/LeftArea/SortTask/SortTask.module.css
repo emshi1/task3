@@ -1,0 +1,11 @@
+.sort{
+    border: black 1px;
+    margin: 1em;
+    text-align: center;
+}
+
+.sel{
+    border-radius: 25px;
+    padding: 5px;
+    width: 50%;
+}

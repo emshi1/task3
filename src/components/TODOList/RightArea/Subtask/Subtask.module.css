@@ -1,0 +1,23 @@
+.subtask{
+    margin: 1em;
+    width: 90%;
+}
+
+.content{
+    width: 90%;
+    text-align: justify;
+    background-color: lightblue;
+    padding: 0.5em;
+    display: inline-block;
+    margin-left: 1em;
+}
+
+.check{
+    color: red;
+    margin-right: 0.5em;
+}
+
+.date {
+    margin-left: 2em;
+}
+
