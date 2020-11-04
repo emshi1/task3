@@ -1,18 +1,21 @@
 import React from 'react';
-//import './App.css';
 import TODOList from "./components/TODOList/TODOList"
 import Login from "./components/Login/LoginForm/LoginForm"
 import Registr from "./components/Login/Registr/Registr"
-import {Route} from "react-router-dom"
+import {Route, Switch} from "react-router-dom"
+import Navbar from './components/Nav/Navbar'
 
 
-const App = (props) => {
-  console.log(props);
+const App = () => {
+
   return (
     <div className="App">
-      <Route exact path ="/" render = { () => <Login/>}/>
-      <Route path ="/TODOlist" render = { () => <TODOList store = {props.store}/> }/>
-      <Route exact path = "/Registr" render = { () => <Registr/>}/>
+      <Navbar/>
+      <Switch>
+      <Route  path ="/login" render = { () => <Login/>}/>
+      <Route  path ="/"render = { () => <TODOList/>}/>
+      <Route  path = "/Registr" render = { () => <Registr/>}/>
+      </Switch>
     </div>
   );
 }

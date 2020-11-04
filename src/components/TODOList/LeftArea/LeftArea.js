@@ -2,21 +2,28 @@ import React from 'react';
 import style from './LeftArea.module.css';
 import SortTask from "./SortTask/SortTask"
 import Task from "./Task/Task"
-import NewTaskConteiner from '../NewTask/NewTaskConteiner';
+import NewTask from '../NewTask/NewTask'
 //<NewTask/>
 
-const LeftArea = (props) => {
-    console.log(props.store.getState());
-    let Item = props.store.getState().taskReducer.tasks.map( i => <Task to={`/TODOList/${i.id}`} id = {i.id} value = {i.value}>{i.value}</Task>)
-    return (
+const LeftArea = ({tasks, uid}) => {
+      return (
         <div className="col-4">
+            
             <div className= {style.left}>
             <SortTask/>
-            {Item}
-            <NewTaskConteiner store = {props.store}/>
+            {tasks && tasks.map(t => {
+                if (uid === t.uid){
+                return (
+                    <Task task = {t} key = {t.id}/>
+                )
+            }
+            }
+            )}
+            <NewTask/>
             </div>
         </div>
     );
 }
+
 
 export default LeftArea;

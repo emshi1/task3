@@ -1,32 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import style from './NewTask.module.css';
-import ButAdd from "../ButAdd/ButAdd"
+import {connect} from 'react-redux';
+import {createTask} from '../../../store/actions/taskActions'
 
 
-const NewTask = (props) =>{
-
-    console.log(props);
-    let element = React.createRef();
-
-    let addTask = () =>{
-         props.addTask();
-         element.current.value = '';
-    }
-    let onNewChange = (e) => {
-        
-        let text = element.current.value;
-        props.postTask(text);
-        
+class NewTask extends Component{
+    state = {
+        title: ''
     }
 
+    handleChange = (e) => {
+        this.setState({
+          [e.target.id]: e.target.value
+        })
+      }
+      handleSubmit = (e) => {
+        e.preventDefault();
+        //console.log(this.state);
+        this.props.createTask(this.state);
+      }
 
+    render () {
     return (
-        <span className={style.add}>
-            <input onChange = {onNewChange} className={style.text} ref = {element}></input>
-            <input type="checkbox" className = "checkbox"></input>
-            <ButAdd onClick={addTask}/>
-        </span>
+        <form onSubmit = {this.handleSubmit} className={style.add}>
+            <input  onChange = {this.handleChange}className={style.text} id = 'title' placeholder='Введите название Списка'></input>
+            <button value="" className = "btn btn-success">ButAdd</button>
+        </form>
     );
 }
+}
 
-export default NewTask;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createTask: (task) => dispatch(createTask(task))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewTask);
