@@ -11,11 +11,9 @@ const App = () => {
   return (
     <div className="App">
       <Navbar/>
-      <Switch>
       <Route  path ="/login" render = { () => <Login/>}/>
       <Route  path ="/"render = { () => <TODOList/>}/>
       <Route  path = "/Registr" render = { () => <Registr/>}/>
-      </Switch>
     </div>
   );
 }
