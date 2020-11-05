@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { BrowserRouter } from "react-router-dom"
+import { HashRouter } from "react-router-dom"
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './store/reducers/rootReducer';
 import { Provider } from 'react-redux'
@@ -36,9 +36,9 @@ const rrfProps = {
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
-    <BrowserRouter>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
     </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById('root')

@@ -21,6 +21,7 @@ class TODOList extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     tasks: state.firestore.ordered.tasks,
     subtask:  state.firestore.ordered.subtask,
