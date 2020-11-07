@@ -8,18 +8,17 @@ import { deleteSub } from '../../../store/actions/subtaskActions';
 class DeleteSub extends Component {
 
     state = {
-        time: this.props.time,
+        id: this.props.id,
         title: this.props.title,
         parrent: this.props.parrent,
     }
     handleClick = (id) => {
         //console.log(this.state);
         if (window.confirm(`Удалить дело ${this.state.title}?`)){
-            this.props.deleteSub(this.state.time, this.state.parrent);}
+            this.props.deleteSub(this.state.id, this.state.parrent);}
     }
 
     render() {
-        //console.log(this.state.id)
         return (
                 <button type="button" onClick = {this.handleClick} className={`btn btn-danger ${style.x}`}>x</button>
         );
@@ -28,7 +27,7 @@ class DeleteSub extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteSub: (time) => dispatch(deleteSub(time))
+        deleteSub: (id, parrent) => dispatch(deleteSub(id, parrent))
     }
 }
 

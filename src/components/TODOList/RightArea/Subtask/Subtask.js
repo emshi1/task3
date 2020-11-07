@@ -2,23 +2,22 @@ import React from 'react';
 import DeleteSub from '../../Delete/DeleteSub';
 import style from './Subtask.module.css';
 
-const Subtask = ({subtask,key}) => {
-    
-    let dateS = subtask.date.seconds
+const Subtask = (props) => {
+    //console.log(props)
+    let dateS = props.subtask.date.seconds
     let date = new Date (dateS * 1000)
     let dateFull = date.getDate() + '.' + date.getMonth() 
     + '.' + date.getFullYear() + ' ' + date.getHours() 
     + ':' + date.getMinutes();
-    //console.log(subtask)
-    //console.log(key)
+    
     return (
         <div className={style.subtask}>
             <input type="checkbox"></input>
             <div className={style.content}>
-                <input type="checkbox" className={style.check} disabled="disabled" defaultChecked = {subtask.urgently}></input>
-                <span>{subtask.title}</span>
+                <input type="checkbox" className={style.check} disabled="disabled" defaultChecked = {props.subtask.urgently}></input>
+                <span>{props.subtask.title}</span>
                 <span className={style.date}>{dateFull}</span>
-                <DeleteSub  title = {subtask.title} />
+                <DeleteSub  title = {props.subtask.title} id = {props.id} parrent = {props.parrent}/>
             </div>
         </div>
     );

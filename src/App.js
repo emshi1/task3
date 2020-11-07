@@ -10,9 +10,9 @@ const todo = () => {
   return (
     < div >
       <Navbar />
-      <Route path="/login" render={() => <Login />} />
-      <Route path="/" render={() => <TODOList />} />
-      <Route path="/Registr" render={() => <Registr />} />
+      <Route exact path="/login" render={() => <Login />} />
+      <Route exact path="/Registr" render={() => <Registr />} />
+      <Route path="/" render={() => <TODOList />}/>
     </div >
   )
 }

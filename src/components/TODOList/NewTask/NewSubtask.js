@@ -12,7 +12,6 @@ class NewSubtask extends Component{
         title: '',
         urgently: false,
         done: false,
-        parrent: this.props.parrent
     }
 
     handleChange = (e) => {
@@ -22,7 +21,7 @@ class NewSubtask extends Component{
       }
       handleSubmit = (e) => {
         e.preventDefault();
-        this.props.createSubtask(this.state);
+        this.props.createSubtask(this.state, this.props.parrent);
       }
 
     render () {
@@ -39,7 +38,7 @@ class NewSubtask extends Component{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createSubtask: (subtask) => dispatch(createSubtask(subtask))
+    createSubtask: (subtask, parrent) => dispatch(createSubtask(subtask, parrent))
   }
 }
 
