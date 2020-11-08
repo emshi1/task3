@@ -5,10 +5,8 @@ import NewTask from '../NewTask/NewTask'
 //<NewTask/>
 
 const LeftArea = (props) => {
-    console.log(props)
       return (
         <div className="col-4">
-            
             <div className= {style.left}>
             <SortTask tasks = {props.tasks} uid = {props.uid}/>
             <NewTask/>

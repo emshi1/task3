@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom"
 
 
 const Task = (Task) => {
-    console.log(Task.task)
     let stle
     if (Task.task.done === 'done') {
         stle = style.done;
@@ -14,8 +13,6 @@ const Task = (Task) => {
     }
     else
         stle = style.task;
-
-
 
     return (
         <div className={stle} id='task'>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Task from '../Task/Task';
 import style from './SortTask.module.css';
 
@@ -11,11 +10,11 @@ class SortTask extends Component {
 
     handleChange = (e) => {
         this.setState({ value: e.target.value })
-        console.log(e.target.value)
+        //console.log(e.target.value)
     }
 
     render() {
-        console.log(this.state)
+        //console.log(this.props)
         return (
             <div>
                 <div className={style.sort} >
@@ -32,13 +31,15 @@ class SortTask extends Component {
                                 <Task task={t} key={t.id} />
                             )
                         }
-
-                        else {
-                            if (this.state.value === t.done) {
-                                return (
-                                    <Task task={t} key={t.id} />
-                                )
-                            }
+                        if (this.state.value === t.done) {
+                            return (
+                                <Task task={t} key={t.id} />
+                            )
+                        }
+                        if (this.state.value === 'almoust' && t.done === 'none') {
+                            return (
+                                <Task task={t} key={t.id} />
+                            )
                         }
                     }
                 }
