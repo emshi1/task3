@@ -25,7 +25,7 @@ class Registr extends Component{
         <h3 className={style.h3}>Регистрация</h3>
       <input onChange={this.handleChange} id = 'email' type = "email" placeholder = "Введите логин" className={style.input}></input>
       <input onChange={this.handleChange} id = 'password' type = "password" placeholder = "Введите пароль" className={style.input}></input>
-      <button className = "btn btn-primary">SignUp</button>
+      <div><button className = "btn btn-primary">SignUp</button></div>
       <div className={style.red}>
           {authError ? <p>{authError}</p> : null}
       </div>
