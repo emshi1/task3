@@ -5,9 +5,11 @@ export const createSubtask = (subtask, parrent) => {
             ...subtask,
             date: new Date()
         }).then (() => {
-            firestore.collection('tasks').doc(parrent).get().then((doc) => {
-            let parrentTitle = doc.data().title;
-            dispatch({ type: 'CREATE_SUBTASK', subtask, parrentTitle});
+            firestore.collection('tasks').doc(parrent).update({ "done": "almoust" }).then(() => {
+                firestore.collection('tasks').doc(parrent).get().then((doc) => {
+                    let parrentTitle = doc.data().title;
+                    dispatch({ type: 'CREATE_SUBTASK', subtask, parrentTitle});
+                    })
             })
         }).catch( (err) => {
             dispatch({ type: 'CREATE_SUBTASK_ERROR', err})

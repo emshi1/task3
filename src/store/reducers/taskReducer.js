@@ -19,12 +19,6 @@ const taskReducer = (state = initState, action) => {
         case 'DONE_TASK_ERROR':
             alert(`ERROR ${action.err}`)
             return state;
-        case 'SORT_TASK':
-            console.log('uspeh')
-            return state;
-        case 'SORT_TASK_ERROR':
-            alert(`ERROR ${action.err}`)
-            return state;
         default:
             return state;
     }

@@ -49,23 +49,3 @@ export const doneTask = (id) => {
         })
     }
 };
-
-export const sortTask = (value) => {
-    return (dispatch, getState, { getFirestore }) => {
-        const firestore = getFirestore();
-        if (value !== 'all' )
-        firestore.collection('tasks').where("done", "==", value).get().then(() => {
-            console.log()
-            dispatch({ type: 'SORT_TASK' })
-        }).catch((err) => {
-            dispatch({ type: 'SORT_TASK_ERROR', err })
-        })
-        else {
-            firestore.collection('tasks').get().then(() => {
-                dispatch({ type: 'SORT_TASK' })
-            }).catch((err) => {
-                dispatch({ type: 'SORT_TASK_ERROR', err })
-            })
-        }
-    }
-};
