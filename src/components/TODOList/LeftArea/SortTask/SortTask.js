@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { sortTask } from '../../../../store/actions/taskActions';
 import style from './SortTask.module.css';
 
-function SortTask (){
+class SortTask extends Component{
+
+    state = {
+        value: 'almoust'
+    }
+
+    handleChange = (e) => {
+        this.setState({value: e.target.value})
+        console.log(e.target.value)
+        this.props.sortTask(this.state)
+    }
+
+    render(){
     return (
-        <form className = {style.sort}>
-        <select className = {style.sel}>
-            <option defaultValue = "Неисполненные">Неисполненные</option>
-            <option value = "Исполненные">Исполненные</option>
-            <option value = "Все">Все</option>
+        <div className = {style.sort} >
+        <select value = {this.state.value} className = {style.sel } onChange = {this.handleChange}>
+            <option value = "almoust">Неисполненные</option>
+            <option value = "done">Исполненные</option>
+            <option value = "all">Все</option>
         </select>
-        </form>
+        </div>
     );
+    }
 }
 
-export default SortTask;
+const mapDispatchToProps = (dispatch) => {
+    return {
+      sortTask: (value) => dispatch(sortTask(value))
+    }
+  }
+
+  export default connect(null, mapDispatchToProps)(SortTask);

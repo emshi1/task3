@@ -1,9 +1,6 @@
-
-
 export const createSubtask = (subtask, parrent) => {
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
-        console.log(firestore.collection('tasks').doc('C3jWrgFfB8X5IS5mDAAs').collection('subtask'))
         firestore.collection('tasks').doc(parrent).collection('subtasks').add({
             ...subtask,
             date: new Date()
@@ -29,3 +26,16 @@ export const deleteSub = (id,parrent) => {
         })
     }
 };
+
+export const subDone = (id, value, parrent) => {
+    return (dispatch, getState, { getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('tasks').doc(parrent).collection('subtasks').doc(id).update({'done':value}).then (() => {
+            dispatch({ type: 'SUB_DONE'})
+        }).catch( (err) => {
+            dispatch({ type: 'SUB_DONE_ERROR', err})
+        })
+    }
+};
+
+

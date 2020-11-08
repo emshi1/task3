@@ -14,6 +14,12 @@ const subtaskReducer = (state = initState, action) => {
         case 'DELETE_SUBTASK_ERROR':
             console.log('ERROR', action.err)
             return state;
+        case 'SUB_DONE':
+            console.log('123')
+            return state;
+        case 'SUB_DONE_ERROR':
+            console.log('ERROR', action.err)
+            return state;
         default:
             return state;
     }

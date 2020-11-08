@@ -13,6 +13,7 @@ const RightArea = (props) => {
     const { task } = props;
     const { parrent } = props;
     const { sub } = props;
+    //console.log(task)
     if (task) {
         return (
             <div className="col-8">
@@ -27,15 +28,14 @@ const RightArea = (props) => {
         )
     } else {
         return (<div>
-            <p>Loading project...</p>
-            <NewSubtask parrent={parrent} />
+            <p>Choose another Task</p>
         </div>
         )
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
+    //console.log(state)
     const id = ownProps.match.params.id;
     const tasks = state.firestore.data.tasks;
     const subtask = state.firestore.data.sbt;
@@ -50,15 +50,14 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect((props) => {
-        console.log(props);
+        //console.log(props);
         return [
             {
                 collection: 'tasks',
                 doc: props.parrent,
-                subcollections: [{ collection: 'subtasks' }],
+                subcollections: [{ collection: 'subtasks', orderBy: ['date', 'asc']}],
                 storeAs: 'sbt'
-            },
-            { collection: 'subtask' }
+            }
         ]
     })
 )(RightArea);

@@ -7,7 +7,6 @@ import {createSubtask} from '../../../store/actions/subtaskActions'
 
 class NewSubtask extends Component{
   
-
     state = {
         title: '',
         urgently: false,
@@ -21,7 +20,12 @@ class NewSubtask extends Component{
       }
       handleSubmit = (e) => {
         e.preventDefault();
-        this.props.createSubtask(this.state, this.props.parrent);
+        if (this.state.title){
+          this.props.createSubtask(this.state, this.props.parrent);
+        }
+        else {
+          alert('Ошибка! Пустая строка')
+        }
       }
 
     render () {
@@ -29,7 +33,7 @@ class NewSubtask extends Component{
         <form onSubmit = {this.handleSubmit} className={style.add}>
             <input  className={style.text}  id = 'title' onChange = {this.handleChange}  placeholder='Введите название Дела'></input>
             <input type="checkbox" id = 'urgently' className = {style.checkbox} onChange = {this.handleChange}></input> 
-            Срочное
+            <span className={style.span}>Срочное</span>
             <button value="" className = "btn btn-success">ButAdd</button>
         </form>
     );

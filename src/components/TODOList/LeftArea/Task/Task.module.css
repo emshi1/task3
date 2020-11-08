@@ -1,11 +1,19 @@
-.task{
+.task, .done, .almoust{
     margin: 1em;
     width: 90%;
     text-align: justify;
-    background-color: lightblue;
     padding: 0.5em;
     display: inline-block;
+    box-shadow: 0 0 10px gray;
 }
+
+.done{
+    background-color: #c5ffab;
+}
+.almoust{
+    background-color:#dbdbdb;
+}
+
 .a{
     color:black;
 }

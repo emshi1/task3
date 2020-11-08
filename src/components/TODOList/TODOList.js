@@ -10,11 +10,12 @@ import {Redirect} from 'react-router-dom'
 class TODOList extends Component {
   render(){ 
     const {auth, tasks} = this.props;
+    //console.log(this.props)
     if(!auth.uid) return <Redirect to='/login' />
     return (
     <div className="row">
       <LeftArea tasks = {tasks} uid = {auth.uid}/>
-      <Route subtask = {this.props} path = '/:id' component = {RightArea}/>
+      <Route path = '/:id' component = {RightArea}/>
     </div>
   );
   }
@@ -23,7 +24,6 @@ class TODOList extends Component {
 const mapStateToProps = (state) => {
   return {
     tasks: state.firestore.ordered.tasks,
-    subtask:  state.firestore.ordered.subtask,
     auth: state.firebase.auth
   }
 }
@@ -31,7 +31,6 @@ const mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    {collection: 'tasks'},
-    {collection: 'subtask', orderBy: ['date', 'asc']},
+    {collection: 'tasks'}
   ])
   )(TODOList);

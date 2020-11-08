@@ -5,22 +5,22 @@ import { NavLink } from "react-router-dom"
 
 
 const Task = (Task) => {
-    /*let elem;
-    if (Task.done === 'done') {
-        elem = document.getElementById('task');
-        elem.style.backgroundColor='#c7c7c7'
-    } else if (Task.done === 'almoust') {
-        elem = document.getElementById('task');
-        elem.style.backgroundColor='#bae6be'
+    console.log(Task.task)
+    let stle
+    if (Task.task.done === 'done') {
+        stle = style.done;
+    } else if (Task.task.done === 'almoust') {
+        stle = style.almoust;
     }
-    else {
-        elem.style.backgroundColor='none'
-    }*/
+    else
+        stle = style.task;
+
+
 
     return (
-        <div className={style.task} id = 'task'>
-            <NavLink to={`/${Task.task.id}`} className = {style.a} >{Task.task.title}</NavLink>
-            <DeleteTask id = {Task.task.id} task = {Task.task.title}/>
+        <div className={stle} id='task'>
+            <NavLink to={`/${Task.task.id}`} className={style.a} >{Task.task.title}</NavLink>
+            <DeleteTask id={Task.task.id} task={Task.task.title} />
         </div>
     );
 }
